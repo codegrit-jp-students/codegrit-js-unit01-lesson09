@@ -31,6 +31,7 @@ myFunc();
 ```js
 myFunc();
 ```
+
 次の簡単な例ではメッセージをログとして出力する処理を記述した関数を呼び出しています。
 
 ```js
@@ -71,6 +72,7 @@ function multiplyNum() {
 }
 console.log(number); // 出力結果は「undefinded」になる。
 ```
+
 それでは例えば、関数の中で宣言した変数の値を別の値に変更したい場合はどうすれば良いのでしょうか。これは次で述べる**_引数_**を使うことで実現できます。
 
 ## 関数の引数
@@ -102,6 +104,8 @@ function addNumber(num1, num2) {
 console.log(addNumber(4,5)); // 9
 ```
 
+<iframe width="100%" height="300" src="//jsfiddle.net/codegrit_hiro/4xad35yg/1/embedded/js,result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+
 この例ではまず、関数呼び出す際に関数に渡したい値を`addNumber(4,5)`のように記述します。この時実引数4は仮引数`num1`へ格納され、実引数5は仮引数`num2`へと格納されます。
 
 ## 初期値を持つ仮引数
@@ -116,17 +120,22 @@ function addNumber(num1, num2 = 1) {
 
 console.log(addNumber(4)); // 5
 ```
+
+<iframe width="100%" height="300" src="//jsfiddle.net/codegrit_hiro/go0fqm9y/1/embedded/js,result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+
 上記の場合、実引数の4は仮引数で定義された順番で格納されていくので、`num1`に格納されます。この時、本来であれば仮引数に対して実引数が一つ足りないのでエラーが起きそうな気がしますがそうはなりません。もし引数が与えられなかったとしても`num2 = 1`とあるように、デフォルトで初期値1が与えられた状態で処理が実行できます。もちろんこれは初期値なので、実引数を与えれば上書きされます。
 
 ```js
 function addNumber(num1, num2 = 1) {
-  let sum = num1 + num2; // num2は6
+  let sum = num1 + num2;
   return sum;
 }
 
 console.log(addNumber(4, 6)); // 10
 ```
+
 ## arguments
+
 JavaScriptでは、関数に任意の個数渡された引数は内部で自動的に`arguments`という名前の**配列**として格納されるので、関数内でこれを取り扱うことができます。
 
 ```js
@@ -140,6 +149,7 @@ func('a','b','c','d','e');
 ```
 
 出力結果：
+
 ```
 'a'
 'b'
@@ -147,6 +157,8 @@ func('a','b','c','d','e');
 'd'
 'e'
 ```
+
+<iframe width="100%" height="300" src="//jsfiddle.net/codegrit_hiro/dtn2zfej/1/embedded/js,result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
 ## 残余引数(Rest Parameters)
 
@@ -163,11 +175,14 @@ sample(100, 200, 300); // 引数を3つ
 ```
 
 出力結果:
+
 ```
 0
 1
 3
 ```
+
+<iframe width="100%" height="300" src="//jsfiddle.net/codegrit_hiro/39604ds1/1/embedded/js,result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
 この時の`args`は配列なので、通常の配列と同じように要素数を返す**lengthプロパティ**を使うことができているのがわかります。
 
@@ -185,6 +200,7 @@ sample(1,2,3,4,5,6,7,8,9); // 5〜9までが配列になる
 ```
 
 出力結果:
+
 ```js
 5
 6
@@ -193,7 +209,10 @@ sample(1,2,3,4,5,6,7,8,9); // 5〜9までが配列になる
 9
 ```
 
+<iframe width="100%" height="300" src="//jsfiddle.net/codegrit_hiro/1mx9ybu7/1/embedded/js,result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+
 ## 関数式
+
 ここまでは関数宣言として関数を単体で定義する記述について見てきましたが、ここでは別の関数の定義の仕方を説明します。
 
 ## 関数式の構文
@@ -223,6 +242,7 @@ let func = function(引数1,引数2 ,...,引数N) {
 let func = function() { return 'Message!'; }
 console.log(func()); // 'Message!'
 ```
+
 **_無名関数_**も関数宣言された関数と同じように引数を使って入出力が実装できます。
 
 ```js
@@ -237,3 +257,5 @@ let func = function(x, y, z) {
 
 displayLog(); // 'The total number is 15'
 ```
+
+<iframe width="100%" height="300" src="//jsfiddle.net/codegrit_hiro/ha4r3euL/1/embedded/js,result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>

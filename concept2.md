@@ -1,7 +1,6 @@
-# 関数コンストラクタ
+## 関数コンストラクタ
 
-関数宣言、関数式の他にもうひとつ**_関数コンストラクタ_**という方法を使って関数を定義することができます。
-
+関数宣言、関数式の他にもうひとつ**_関数コンストラクタ_**という方法を使って関数を定義することができます。尚、この関数コンストラクタを利用した方法は、言語としては正しいのですがbad practice(悪い方法)とされています。理由は関数コンストラクタはevalというファンクションを裏側で利用しており、このevalファンクションの動作が遅いためです。そのため、この項目の内容は知識として最低限知っておけば大丈夫です。
 
 ## 関数コンストラクタの構文
 
@@ -17,11 +16,11 @@ Functionに続く括弧「()」の中に引数を記述していきます。た�
 以下は**_関数コンストラクタ_**を使ったサンプルコードです。
 
 ```js
-function displayLog()
-{
+function displayLog() {
   total = func(2, 5, 8); // 関数コンストラクタに引数を格納して実行
   console.log('The total number is '+total);
 }
+
 let func = new Function(
   'x',
   'y',
@@ -32,17 +31,20 @@ let func = new Function(
 displayLog(); // 'The total number is 15'
 ```
 
-# 関数宣言と関数式と関数コントラクタの違い
+<iframe width="100%" height="300" src="//jsfiddle.net/codegrit_hiro/9cdpg2u7/1/embedded/js,result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+
+## 関数宣言と関数式と関数コントラクタの違い
+
 以下の3種類の関数はそれぞれ同じ結果を出力します。
 
 ```js
 // 関数宣言
 function func1(a, b) {
-  return a*b;
+  return a * b;
 }
 // 関数式
 let func2 = function(a, b) {
-  return a*b;
+  return a * b;
 }
 // 関数コントラクタ
 let func3 = new Function('a', 'b', 'return a * b;');
@@ -52,23 +54,4 @@ console.log(func2(4,8)); // 32
 console.log(func3(4,8)); // 32
 ```
 
-ただし関数式と**_関数コンストラクタ_**で定義されたものとは違い、関数宣言で定義された関数は定義式より前で呼び出すことができます。
-```js
-// 関数宣言
-message(); // 'Hello!'
-function message() {
-   console.log('Hello');
-}
-```
-```js
-// 関数式
-message(); // TypeErrorとなり出力されない
-var message = function(){
-   console.log('Hello');
-}
-```
-```js
-// 関数コントラクタ
-message(); // TypeErrorとなり出力されない
-var message = new Function(console.log('Hello'));
-```
+<iframe width="100%" height="300" src="//jsfiddle.net/codegrit_hiro/9cdpg2u7/2/embedded/js,result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
